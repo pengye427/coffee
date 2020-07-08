@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- 导航 -->
+    <div class="nav bxq">
+        <ul>
+            <li><a href="../首页/首页.html">首页</a></li>
+            <li><a href="../关于公司/关于公司/index.html">关于我们</a></li>
+            <li><a href="../产品/卡布奇诺/index.html">产品介绍</a></li>
+            <li><a href="../公司团队/index.html">我们团队</a></li>
+            <li><a href="./联系我们.html">联系我们</a></li>
+        </ul>
+    </div>
+
+
+    <!-- banner -->
+    <div class="carousel">
+        <div class="carousel_img">
+            <img src="../img/banner.png" alt="">
+            <img src="../img/banner.png" alt="">
+            <img src="../img/banner.png" alt="">
+            <img src="../img/banner.png" alt="">
+        </div>
+        <button>&lt;</button>
+        <button>&gt;</button>
+        <ol>
+            <dl sg="0" class="active"></dl>
+            <dl sg="1"></dl>
+            <dl sg="2"></dl>
+            <dl sg="3"></dl>
+        </ol>
+    </div>
+    
+    
+    <!-- 底部地图区 -->
+    <div class="map">
+        <img src="../img/联系我们2.png" alt="">
+        <img src="../img/map0.png" alt="">
+        <div class="bb">
+            <div class="li1">
+                <div class="left11">
+                    <img src="../img/phone.png" alt="">
+                </div>
+                <div class="right22">
+                    <h2>咨询热线</h2>
+                    <p>Information Hotline</p>
+                    <strong>重庆：+86 023-867-7848</strong>
+                    <p>（09：30~18：30 北京时间）</p>
+                </div>
+            </div>
+            <div class="li1">
+                <div class="left11">
+                    <img src="../img/map1.png" alt="">
+                </div>
+                <div class="right22">
+                    <h2>公司地址</h2>
+                    <p>Company address</p>
+                    <strong>地址：重庆大坪龙湖时代天街3号写字楼2407室</strong>
+                    <p>（09：30~18：30 北京时间）</p>
+                </div>
+            </div>
+            <div class="li1">
+                <div class="left11">
+                    <img src="../img/email.png" alt="">
+                </div>
+                <div class="right22">
+                    <h2>公司邮箱</h2>
+                    <p>E-mail</p>
+                    <strong>邮箱：info@haitouglobal.com</strong>
+                    <p>（09：30~18：30 北京时间）</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="foot bxq">
+        <div class="bxq">
+            <p>Copyright © 重庆duzu有限公司 | duzu备案号 33010602001878 号 版权所有：重庆戈登有限公司</p>
+            <img src="../img/logo.png" alt="">
+        </div>
+    </div>
+    <script>
+        var car = document.getElementsByClassName("carousel")[0];
+        var car_img = document.getElementsByClassName("carousel_img")[0];
+        var btns = document.getElementsByTagName("button");
+        var lis=document.getElementsByTagName("dl");
+        var j = 0;
+        for (var i in btns) {
+            btns[i].onclick = function () {
+                if (this.innerHTML == "&gt;") {
+                    play(1)
+                } else {
+                    play(-1)
+                }
+
+            }
+        }
+        for (var i in lis) {
+            lis[i].onclick = function () {
+                play(this);
+            }
+        }
+        timer = setInterval(function () {
+            play(1)
+        }, 3000)
+
+        car.onmouseover = function () {
+            clearInterval(timer);
+            timer = null;
+        }
+        car.onmouseout = function () {
+            timer = setInterval(function () {
+                play(1)
+            }, 3000)
+        }
+
+
+        function play(x) {
+            if (typeof (x) == "number") {
+                j += x;
+                if (j == 4) {
+                    j = 0;
+                }
+                if (j == -1) {
+                    j = 3;
+                }
+            } else {
+                j = x.getAttribute("sg");
+            }
+            car_img.style.left = j * (-100) + "%"
+            for (var i in lis) {
+                lis[i].className = ""
+            }
+            lis[j].className = "active"
+        }
+    </script>
+</body>
+
+</html>
